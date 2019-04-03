@@ -4,6 +4,7 @@ import Card from './Card';
 
 class ProductList extends Component {
     constructor(props){
+      console.log(props)
       super(props);
       
         this.state={
@@ -40,7 +41,7 @@ class ProductList extends Component {
         if(this.props.search ==''){
             
             listOfItemsDisplayed = this.state.items.map((product, index) => {
-                return <Card key={index} details={product} />
+                return <Card add={this.props.count} remove={this.props.remove}key={index} details={product} />
             })
         }
         else{
@@ -48,7 +49,7 @@ class ProductList extends Component {
              return product.name.includes(this.props.search);
             });
             listOfItemsDisplayed = filteritems.map((product,index)=>{
-                return <Card key={index} details={product}/>
+                return <Card add={this.props.count} remove={this.props.remove} key={index} details={product}/>
             })
         }
         

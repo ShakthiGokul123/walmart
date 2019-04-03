@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '../Button';
 
 
 class Card extends Component {
@@ -18,7 +19,7 @@ class Card extends Component {
                 <h5 className="card-title" >{this.props.details.name}</h5>
                 <h5 className="card-title" >price = $ {this.props.details.salePrice}</h5>
                 <p className="card-text">shortDescription :{this.props.details.shortDescription}</p>
-                <button type="button" className="btn btn-primary">Add</button>
+              <Button add={this.props.add} remove={this.props.remove}/>
                 
             </div>
             </div>

@@ -6,12 +6,14 @@ class App extends Component {
   constructor(props){
     super();
     this.state={
-      number:0,
+      counter:0,
       
       searchQuery:''//to search movies
 
     }
     this.handleOnChangeText = this.handleOnChangeText.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
   handleOnChangeText(data){
     
@@ -23,23 +25,27 @@ class App extends Component {
        this.setState(currentstate);
        
      }
-     handleEventFormAdd(data){
-       let incrementnumber = this.state;
-       incrementnumber.number = data;
-       this.setState(incrementnumber);
-     }
-     handleEventFormRemove(data){
-       let decrementNumber = this.data;
-       decrementNumber.number = data;
-       this.setState(decrementNumber);
-       
-     }
+    handleAdd(){
+      let currentstate = this.state;
+      
+      currentstate.counter++;
+      this.setState(currentstate);
+    }
+    handleRemove(){
+      let currentstate = this.state;
+      if(currentstate.counter ===0){
+        this.setState(currentstate);
+      }else{
+        currentstate.counter--;
+        this.setState(currentstate);
+      }
+    }
   render() {
     return (
       <div className="App">
-       <Header/>
+       <Header add={this.state.counter}/>
        <Search textbox={this.handleOnChangeText}/>
-       <ProductList search={this.state.searchQuery}/>
+       <ProductList count={this.handleAdd} remove={this.handleRemove} search={this.state.searchQuery}/>
       </div>
     );
   }
